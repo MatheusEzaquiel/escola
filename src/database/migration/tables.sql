@@ -1,3 +1,4 @@
+-- #1 Cursos
 CREATE TABLE cursos (
 	id SERIAL PRIMARY KEY NOT NULL,
 	nome VARCHAR(100),
@@ -12,7 +13,7 @@ CREATE TABLE alunos (
 	nome VARCHAR(100) NOT NULL,
 	matricula INT NOT NULL UNIQUE,
 	senha VARCHAR(50) NOT NULL,
-	idCurso INTEGER REFERENCES cursos(id),
+	id_curso INTEGER REFERENCES cursos(id),
 	ativo BOOLEAN DEFAULT TRUE NOT NULL,
 	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	atualizado_em TIMESTAMP
@@ -27,18 +28,18 @@ CREATE TABLE professores (
 	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	atualizado_em TIMESTAMP
 );
-
+	   
 CREATE TABLE disciplinas(
 	id SERIAL PRIMARY KEY NOT NULL,
 	codigo VARCHAR(50) UNIQUE NOT NULL,
 	nome VARCHAR(50),
-	idCurso INTEGER REFERENCES cursos(id),
-	idProf INTEGER REFERENCES professor(id),
+	id_curso INTEGER REFERENCES cursos(id),
+	id_professor INTEGER REFERENCES professor(id),
 	ativo BOOLEAN DEFAULT TRUE NOT NULL,
 	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	atualizado_em TIMESTAMP
-);
-	   
+)
+	      
 CREATE TABLE aluno_disciplina_professor (
 	id SERIAL PRIMARY KEY NOT NULL,
 	av1 FLOAT,
@@ -50,4 +51,4 @@ CREATE TABLE aluno_disciplina_professor (
 	ativo BOOLEAN DEFAULT TRUE NOT NULL,
 	criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
 	atualizado_em TIMESTAMP
-);
+)
