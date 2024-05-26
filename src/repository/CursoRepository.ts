@@ -14,6 +14,14 @@ export class CursoRepository {
         return await this.db.manyOrNone("SELECT * FROM cursos");
     }
 
+    async selectEnabled() {
+        return await this.db.manyOrNone("SELECT * FROM cursos WHERE ativo = TRUE");
+    }
+
+    async selectDisabled() {
+        return await this.db.manyOrNone("SELECT * FROM cursos WHERE ativo = FALSE");
+    }
+
     async selectOne(id: number) {
         return await this.db.oneOrNone("SELECT * FROM cursos WHERE id = $1", id);
     }

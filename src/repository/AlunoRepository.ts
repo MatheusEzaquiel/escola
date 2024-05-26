@@ -15,6 +15,14 @@ export class AlunoRepository {
         return await this.db.manyOrNone("SELECT * FROM alunos");
     }
 
+    async selectEnabled() {
+        return await this.db.manyOrNone("SELECT * FROM alunos WHERE ativo = TRUE");
+    }
+
+    async selectDisabled() {
+        return await this.db.manyOrNone("SELECT * FROM alunos WHERE ativo = FALSE");
+    }
+
     async insert(aluno: Aluno) {
         await this.db.any("INSERT INTO alunos(nome, matricula, senha, idCurso) VALUES ($1, $2, $3, $4)", [aluno.nome, aluno.matricula, aluno.senha, aluno.idCurso]);
         return this.selectLast();

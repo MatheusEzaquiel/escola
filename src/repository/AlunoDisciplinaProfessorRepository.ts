@@ -14,6 +14,14 @@ export class AlunoDisciplinaProfessorRepository {
         return await this.db.manyOrNone("SELECT * FROM aluno_disciplina_professor");
     }
 
+    async selectEnabled() {
+        return await this.db.manyOrNone("SELECT * FROM aluno_disciplina_professor WHERE ativo = TRUE");
+    }
+
+    async selectDisabled() {
+        return await this.db.manyOrNone("SELECT * FROM aluno_disciplina_professor WHERE ativo = FALSE");
+    }
+
     async selectOne(id: number) {
         return await this.db.oneOrNone("SELECT * FROM aluno_disciplina_professor WHERE id = $1", id);
     }

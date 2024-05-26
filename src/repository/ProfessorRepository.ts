@@ -14,6 +14,14 @@ export class ProfessorRepository {
         return await this.db.manyOrNone("SELECT * FROM professores");
     }
 
+    async selectEnabled() {
+        return await this.db.manyOrNone("SELECT * FROM professores WHERE ativo = TRUE");
+    }
+
+    async selectDisabled() {
+        return await this.db.manyOrNone("SELECT * FROM professores WHERE ativo = FALSE");
+    }
+
     async insert(dados: Professor) {
         await this.db.any("INSERT INTO professores(nome, matricula, senha) VALUES ($1, $2, $3)", [dados.nome, dados.matricula, dados.senha]);
         return this.selectLast();

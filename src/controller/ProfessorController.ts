@@ -9,6 +9,14 @@ export class ProfessorController {
         return await profRepos.selectAll();
     }
 
+    async listEnabled() {
+        return await profRepos.selectEnabled();
+    }
+
+    async listDisabled() {
+        return await profRepos.selectDisabled();
+    }
+
     async get(id: number) {
         return await profRepos.selectOne(id);
     }

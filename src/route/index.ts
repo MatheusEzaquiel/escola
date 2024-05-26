@@ -28,6 +28,16 @@ export const routes = async (fastify: FastifyInstance, options: FastifyPluginOpt
             reply.send(rep);
         });
 
+        fastify.get("/alunos/ativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Aluno[] = await alunoController.listEnabled();  
+            reply.send(rep);
+        });
+
+        fastify.get("/alunos/inativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Aluno[] = await alunoController.listDisabled();  
+            reply.send(rep);
+        });
+
         fastify.get(`/alunos/:id`, async (request: FastifyRequest, reply: FastifyReply) => {
             const params = request.params as { id: string };
             const id: number = parseInt(params.id);
@@ -75,6 +85,16 @@ export const routes = async (fastify: FastifyInstance, options: FastifyPluginOpt
     //Cursos
         fastify.get("/cursos", async (request: FastifyRequest, reply: FastifyReply) => {
             const rep: Curso[] = await cursoController.index();  
+            reply.send(rep);
+        });
+
+        fastify.get("/cursos/ativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Curso[] = await cursoController.listEnabled();  
+            reply.send(rep);
+        });
+
+        fastify.get("/cursos/inativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Curso[] = await cursoController.listDisabled();  
             reply.send(rep);
         });
 
@@ -128,6 +148,16 @@ export const routes = async (fastify: FastifyInstance, options: FastifyPluginOpt
             reply.send(rep);
         });
 
+        fastify.get("/professores/ativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Professor[] = await professorController.listEnabled();  
+            reply.send(rep);
+        });
+
+        fastify.get("/professores/inativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Professor[] = await professorController.listDisabled();  
+            reply.send(rep);
+        });
+
         fastify.get(`/professores/:id`, async (request: FastifyRequest, reply: FastifyReply) => {
             const params = request.params as { id: string };
             const id: number = parseInt(params.id);
@@ -174,6 +204,16 @@ export const routes = async (fastify: FastifyInstance, options: FastifyPluginOpt
         //Disciplinas
         fastify.get("/disciplinas", async (request: FastifyRequest, reply: FastifyReply) => {
             const rep: Disciplina[] = await disciplinaController.index();  
+            reply.send(rep);
+        });
+
+        fastify.get("/disciplinas/ativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Disciplina[] = await disciplinaController.listEnabled();  
+            reply.send(rep);
+        });
+
+        fastify.get("/disciplinas/inativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: Disciplina[] = await disciplinaController.listDisabled();  
             reply.send(rep);
         });
 
@@ -225,6 +265,16 @@ export const routes = async (fastify: FastifyInstance, options: FastifyPluginOpt
         //dados conjuntos / aluno professor aluno
         fastify.get("/dados-conjuntos", async (request: FastifyRequest, reply: FastifyReply) => {
             const rep: AlunoDisciplinaProfessor[] = await dadosConjuntosController.index();  
+            reply.send(rep);
+        });
+
+        fastify.get("/dados-conjuntos/ativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: AlunoDisciplinaProfessor[] = await dadosConjuntosController.listEnabled();  
+            reply.send(rep);
+        });
+
+        fastify.get("/dados-conjuntos/inativos", async (request: FastifyRequest, reply: FastifyReply) => {
+            const rep: AlunoDisciplinaProfessor[] = await dadosConjuntosController.listDisabled();  
             reply.send(rep);
         });
 

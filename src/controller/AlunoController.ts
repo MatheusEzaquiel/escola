@@ -9,6 +9,14 @@ export class AlunoController {
         return await alunoRepos.selectAll();
     }
 
+    async listEnabled() {
+        return await alunoRepos.selectEnabled();
+    }
+
+    async listDisabled() {
+        return await alunoRepos.selectDisabled();
+    }
+
     async get(id: number) {
         return await alunoRepos.selectOne(id);
     }

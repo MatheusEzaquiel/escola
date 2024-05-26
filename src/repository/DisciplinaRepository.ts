@@ -15,6 +15,14 @@ export class DisciplinaRepository {
         return await this.db.manyOrNone("SELECT * FROM disciplinas");
     }
 
+    async selectEnabled() {
+        return await this.db.manyOrNone("SELECT * FROM disciplinas WHERE ativo = TRUE");
+    }
+
+    async selectDisabled() {
+        return await this.db.manyOrNone("SELECT * FROM disciplinas WHERE ativo = FALSE");
+    }
+
     async selectOne(id: number) {
         return await this.db.oneOrNone("SELECT * FROM disciplinas WHERE id = $1", id);
     }

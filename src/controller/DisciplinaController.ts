@@ -11,6 +11,14 @@ export class DisciplinaController {
         return await disciplinaRepos.selectAll();
     }
 
+    async listEnabled() {
+        return await disciplinaRepos.selectEnabled();
+    }
+
+    async listDisabled() {
+        return await disciplinaRepos.selectDisabled();
+    }
+
     async get(id: number) {
         return await disciplinaRepos.selectOne(id);
     }

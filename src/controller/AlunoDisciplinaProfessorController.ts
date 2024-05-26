@@ -9,6 +9,14 @@ export class AlunoDisciplinaProfessorController {
         return await alunoDiscProfRepos.selectAll();
     }
 
+    async listEnabled() {
+        return await alunoDiscProfRepos.selectEnabled();
+    }
+
+    async listDisabled() {
+        return await alunoDiscProfRepos.selectDisabled();
+    }
+
     async get(id: number) {
         return await alunoDiscProfRepos.selectOne(id);
     }

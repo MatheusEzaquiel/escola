@@ -9,6 +9,14 @@ export class CursoController {
         return await cursoRepos.selectAll();
     }
 
+    async listEnabled() {
+        return await cursoRepos.selectEnabled();
+    }
+
+    async listDisabled() {
+        return await cursoRepos.selectDisabled();
+    }
+
     async get(id: number) {
         return await cursoRepos.selectOne(id);
     }
