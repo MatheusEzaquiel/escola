@@ -1,7 +1,8 @@
 import Fastify from "fastify";
 import { routes } from "./route";
+import fastifyCors from "@fastify/cors";
 
-require('dotenv').config()
+require('dotenv').config();
 
 const app = Fastify({logger: true})
 const nodePort = parseInt(process.env.NODE_PORT || '3333');
@@ -9,6 +10,7 @@ const nodePort = parseInt(process.env.NODE_PORT || '3333');
 const start = async() => {
 
     await app.register(routes);
+    
 
     try {
         await app.listen({ port: nodePort});
