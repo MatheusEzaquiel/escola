@@ -24,7 +24,7 @@ export class AlunoRepository {
     }
 
     async insert(aluno: Aluno) {
-        await this.db.any("INSERT INTO alunos(nome, matricula, senha, idCurso) VALUES ($1, $2, $3, $4)", [aluno.nome, aluno.matricula, aluno.senha, aluno.idCurso]);
+        await this.db.any("INSERT INTO alunos(nome, matricula, senha, id_curso) VALUES ($1, $2, $3, $4)", [aluno.nome, aluno.matricula, aluno.senha, aluno.idCurso]);
         return this.selectLast();
     }
 
